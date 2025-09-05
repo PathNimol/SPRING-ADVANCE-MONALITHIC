@@ -1,6 +1,7 @@
 package org.hrd.homeworkspringdatajpa.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.hrd.homeworkspringdatajpa.base.ApiResponse;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/customers")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class CustomerController {
     private final CustomerService customerService;
 
