@@ -1,6 +1,7 @@
 package org.hrd.homeworkspringdatajpa.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class OrderController {
     private final OrderService orderService;
 

@@ -1,6 +1,7 @@
 package org.hrd.homeworkspringdatajpa.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.hrd.homeworkspringdatajpa.base.ApiResponse;
@@ -16,11 +17,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/products")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "breathAuth")
 public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    @Operation(summary = "List all products (paginated")
+    @Operation(summary = "List all products (paginated)")
     public ResponseEntity<ApiResponse<PageResponse<ProductResponse>>> getAllProducts(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,

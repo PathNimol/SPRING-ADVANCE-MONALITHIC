@@ -4,15 +4,23 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: 151003
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:151003}
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      ddl-auto: update   # Consider 'validate' or 'none' for production
+    show-sql: true       # Disable in production, enable only in dev
     properties:
       hibernate:
         format_sql: true
         order_inserts: true
         order_updates: true
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+server:
+  port: 8082
